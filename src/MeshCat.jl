@@ -52,6 +52,7 @@ import FFMPEG
 import Base: delete!
 
 export Visualizer,
+       CoreVisualizer,
        IJuliaCell,
        render,
        render_static,

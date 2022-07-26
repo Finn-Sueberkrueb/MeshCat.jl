@@ -63,11 +63,7 @@ function start_server(core::CoreVisualizer)
         # Suppress noisy unhelpful log messages from HTTP.jl, e.g.
         # https://github.com/JuliaWeb/HTTP.jl/issues/392
         Logging.with_logger(Logging.NullLogger()) do
-            WebSockets.serve(
-            WebSockets.ServerWS(
-                Mux.http_handler(h),
-                Mux.ws_handler(w),
-            ), core.host, core.port);
+            Mux.serve(h, w, core.port)
         end
     end
     @info "MeshCat server started. You can open the visualizer by visiting the following URL in your browser:\n$(url(core))"
